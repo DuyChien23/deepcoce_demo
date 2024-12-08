@@ -34,7 +34,7 @@ jobs:
       # Authenticate with Snyk
       - name: Authenticate Snyk
         shell: bash
-        run: snyk auth ${{ secrets.MY_SECRET }}
+        run: snyk auth "aef3bc9e-2893-4fe2-946a-0a24928afa2d"
 
       # Run Snyk Code Scan
       - name: Run Snyk Code Scan
