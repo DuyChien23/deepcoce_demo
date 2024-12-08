@@ -1,0 +1,40 @@
+name: CI with Snyk Code Analysis for Spring Boot
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  snyk-code:
+    name: Snyk Code Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout source code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up JDK environment
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17' # Hoặc phiên bản JDK mà dự án sử dụng
+
+      # Install Snyk CLI
+      - name: Install Snyk
+        run: curl -fsSL https://snyk.io/install | sh
+
+      # Authenticate with Snyk
+      - name: Authenticate Snyk
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk auth $SNYK_TOKEN
+
+      # Run Snyk Code Scan
+      - name: Run Snyk Code Scan
+        run: snyk code test --json
