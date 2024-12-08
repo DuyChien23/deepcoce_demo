@@ -38,4 +38,4 @@ jobs:
 
       # Run Snyk Code Scan
       - name: Run Snyk Code Scan
-        run: snyk code test --json
+        run: snyk code test src/main/java --json-file-output=report.json
