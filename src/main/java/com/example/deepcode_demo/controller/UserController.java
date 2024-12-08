@@ -14,6 +14,12 @@ public class UserController {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @GetMapping("/greet")
+    public String greetUser(@RequestParam String name) {
+        // Trực tiếp trả về đầu vào của người dùng
+        return "<h1>Welcome, " + name + "!</h1>";
+    }
+
     // SQL Injection Vulnerability
     @GetMapping
     public List<Object> getUser(@RequestParam String id) {
@@ -32,14 +38,9 @@ public class UserController {
         return "Memory leak triggered";
     }
 
-    // Không xử lý lỗi đúng cách
-    @GetMapping("/crash")
+    @GetMapping("/divideByZero")
     public String crashApp() {
-        try {
-            int result = 10 / 0; // Lỗi chia cho 0
-        } catch (Exception e) {
-            System.out.println("Lỗi xảy ra nhưng không xử lý đúng cách");
-        }
+        int result = 10 / 0;
         return "App vẫn chạy dù có lỗi nghiêm trọng";
     }
 }
