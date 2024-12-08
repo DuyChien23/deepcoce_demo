@@ -25,10 +25,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17' # Hoặc phiên bản JDK mà dự án sử dụng
 
-      - name: Install and Run Snyk
-        uses: snyk/actions/setup@v2
-        with:
-          version: 'latest'
+      - name: Install Snyk CLI
+        run: |
+          curl -o snyk https://static.snyk.io/cli/latest/snyk-linux
+          chmod +x snyk
+          sudo mv snyk /usr/local/bin/snyk
 
       # Authenticate with Snyk
       - name: Authenticate Snyk
