@@ -16,7 +16,7 @@ public class UserController {
 
     @GetMapping("/greet")
     public String greetUser(@RequestParam String name) {
-        // Trực tiếp trả về đầu vào của người dùng
+        // Trực tiếp trả về đầu vào của user
         return "<h1>Welcome, " + name + "!</h1>";
     }
 
