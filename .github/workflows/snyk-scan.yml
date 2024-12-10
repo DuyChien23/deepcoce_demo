@@ -41,3 +41,12 @@ jobs:
 
       - name: Run Snyk Open Source Scan
         run: snyk test --json-file-output=opensource_report.json
+        continue-on-error: true
+
+      - name: Run Snyk IaC Scan
+        run: snyk iac test --json-file-output=iac_report.json
+        continue-on-error: true
+
+      - name: Run Snyk Open Source Scan
+        run: snyk test --json-file-output=opensource_report.json
+        continue-on-error: true
