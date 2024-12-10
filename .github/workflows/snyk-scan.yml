@@ -41,8 +41,8 @@ jobs:
         run: snyk code test src/main/java --json-file-output=report.json
         continue-on-error: true
 
-      - name: Run Snyk Code Quality Scan
-        run: snyk code test src/main/java --json-file-output=quality-report.json
+      - name: Run Snyk Code Quality
+        run: snyk code test --quality --json-file-output=quality-report.json
         continue-on-error: true
 
       - name: Run Snyk IaC Scan
