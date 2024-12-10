@@ -39,3 +39,10 @@ jobs:
       # Run Snyk Code Scan
       - name: Run Snyk Code Scan
         run: snyk code test src/main/java --json-file-output=report.json
+
+      - name: Run Snyk IaC Scan
+        run: snyk iac test --json-file-output=iac_report.json
+
+      - name: Run Snyk Open Source Scan
+        run: snyk test --json-file-output=opensource_report.json
+

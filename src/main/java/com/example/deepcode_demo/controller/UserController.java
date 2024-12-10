@@ -14,6 +14,7 @@ public class UserController {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     @GetMapping("/greet")
     public String greetUser(@RequestParam String name) {
         // Trực tiếp trả về đầu vào của user
@@ -27,19 +28,14 @@ public class UserController {
         return entityManager.createNativeQuery(query).getResultList();
     }
 
-    // Memory Leak (lỗi quản lý bộ nhớ)
-    private List<byte[]> memoryLeakList = new ArrayList<>();
-
-    @GetMapping("/leak")
-    public String triggerMemoryLeak() {
-        for (int i = 0; i < 1000; i++) {
-            memoryLeakList.add(new byte[1024 * 1024]); // Thêm dữ liệu không giải phóng
-        }
-        return "Memory leak triggered";
-    }
-
     @GetMapping("/divideByZero")
     public String crashApp() {
+        int result = 10 / 0;
+        return "App vẫn chạy dù có lỗi nghiêm trọng";
+    }
+
+    @GetMapping("/duplicateScript")
+    public String duplicateScript() {
         int result = 10 / 0;
         return "App vẫn chạy dù có lỗi nghiêm trọng";
     }
