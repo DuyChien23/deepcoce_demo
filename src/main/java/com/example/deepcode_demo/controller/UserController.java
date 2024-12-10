@@ -33,10 +33,4 @@ public class UserController {
         int result = 10 / 0;
         return "App vẫn chạy dù có lỗi nghiêm trọng";
     }
-
-    @GetMapping("/duplicateScript")
-    public String duplicateScript() {
-        int result = 10 / 0;
-        return "App vẫn chạy dù có lỗi nghiêm trọng";
-    }
 }
