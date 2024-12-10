@@ -46,7 +46,7 @@ jobs:
         continue-on-error: true
 
       - name: Run Snyk IaC Scan
-        run: snyk container test my-container-image --json-file-output=container-report.json
+        run: snyk container test --json-file-output=container-report.json
         continue-on-error: true
 
       - name: Run Snyk Open Source Scan
