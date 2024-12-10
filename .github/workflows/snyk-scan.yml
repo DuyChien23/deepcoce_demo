@@ -36,11 +36,9 @@ jobs:
         shell: bash
         run: snyk auth "aef3bc9e-2893-4fe2-946a-0a24928afa2d"
 
-      - name: Run Snyk IaC Scan
-        run: snyk iac test --json-file-output=iac_report.json
-
-      - name: Run Snyk Open Source Scan
-        run: snyk test --json-file-output=opensource_report.json
+      # Run Snyk Code Scan
+      - name: Run Snyk Code Scan
+        run: snyk code test src/main/java --json-file-output=report.json
         continue-on-error: true
 
       - name: Run Snyk IaC Scan
