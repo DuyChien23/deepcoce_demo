@@ -10,7 +10,7 @@ on:
 
 jobs:
   snyk-code:
-    name: Snyk Code Analysis
+    name: Snyk Open Source and IaC Analysis
     runs-on: ubuntu-latest
 
     steps:
